@@ -2,4 +2,4 @@
 yamdb_final
 
 ### workflow status
-https://github.com/<Vuictorovna>/<yamdb_final>/actions/workflows/<yamdb_workflow.yml>/badge.svg
+![YamDB workflow](https://github.com/Vuictorovna/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)

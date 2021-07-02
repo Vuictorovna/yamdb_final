@@ -1,16 +1,14 @@
 import uuid
 
-from api_yamdb.settings import (
-    ADMIN_EMAIL,
-    CONFIRMATION_MESSAGE_TEMPLATE,
-    CONFIRMATION_MESSAGE_TOPIC,
-)
 from django.contrib.auth import get_user_model
 from django.core.mail import send_mail
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
+
+from api_yamdb.settings import (ADMIN_EMAIL, CONFIRMATION_MESSAGE_TEMPLATE,
+                                CONFIRMATION_MESSAGE_TOPIC)
 
 from .serializers import AuthTokenSerializer, EmailSerializer
 

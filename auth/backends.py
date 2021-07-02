@@ -4,7 +4,7 @@ from django.contrib.auth.backends import ModelBackend
 
 class EmailBackend(ModelBackend):
     def authenticate(self, request, password=None, **kwargs):
-        UserModel = get_user_model()
+        UserModel = get_user_model()  # noqa: N806
 
         try:
             if "email" in kwargs:
