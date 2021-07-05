@@ -11,18 +11,18 @@
 ***
 **Note:** Сами произведения в YaMDb не хранятся, здесь нельзя посмотреть фильм или послушать музыку.
 
-### Посмотреть на то, как работает проект можно по этому адресу http://84.252.143.117/admin
+### Посмотреть на то, как работает проект можно по этому адресу http://84.252.143.117/redoc
 
 ### Технологии
-Python 3.8.5
-Django 3.0.5
-Gunicorn 20.1.0
-Nginx 1.19.3
-Postgres 12.4
+* Python 3.8.5
+* Django 3.0.5
+* Gunicorn 20.1.0
+* Nginx 1.19.3
+* Postgres 12.4
 
 ### Команды для работы с приложением
 -  Клонировать приложение к себе в репозиторий
-```
+```bash
 git clone https://github.com/Vuictorovna/yamdb_final.git
 ```
 - Необходимые переменные окружения, сохраненные в .env
@@ -34,25 +34,25 @@ git clone https://github.com/Vuictorovna/yamdb_final.git
     - DB_PORT
 
 - Запуск приложения
-```
+```bash
 docker-compose up
 ```
 - Сделать миграции
-```
+```bash
 docker-compose exec web python manage.py makemigrations api
 
 docker-compose exec web python manage.py migrate --noinput
 ```
 - Создание суперпользователя
-```
+```bash
 docker-compose exec web python manage.py createsuperuser
 ```
 - Подготовка статики проекта
-```
+```bash
 docker-compose exec web python manage.py collectstatic --no-input
 ```
 - Запуск тестов
-```
+```bash
 docker-compose exec web python manage.py pytest
 ```
 ### Авторы
