@@ -81,6 +81,7 @@ jobs:
             echo DB_PORT=${{ secrets.DB_PORT }} >> .env
             sudo docker-compose run web python3 manage.py collectstatic
             sudo docker-compose up -d
+            sudo docker cp /home/vuictorovna/static/redoc.yaml vuictorovna_web_1:/code/static
 
   send_message:
     runs-on: ubuntu-latest
