@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - master
+      - "*"
   pull_request:
     branches:
       - master
+      - "*"
 
 jobs:
   tests:
@@ -21,7 +23,7 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Display Python version
-      run: python -c "import sys; print(sys.version)"
+      run: python --version
 
     - name: Install dependencies
       run: |
@@ -59,7 +61,6 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
     needs: build_and_push_to_docker_hub
     steps:
       - name: executing remote ssh commands to deploy
@@ -82,10 +83,10 @@ jobs:
             echo DB_PORT=${{ secrets.DB_PORT }} >> .env
             sudo docker-compose run web python3 manage.py collectstatic
             sudo docker-compose up -d
+            sudo docker cp /home/vuictorovna/static/redoc.yaml vuictorovna_web_1:/code/static
 
   send_message:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
     needs: deploy
     steps:
     - name: send message
